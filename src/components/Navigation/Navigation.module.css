@@ -26,3 +26,7 @@
 .Navigation ul a:hover {
     color: #0288D1;
 }
+
+.Navigation a.activeLink {
+    color: #026399;
+}

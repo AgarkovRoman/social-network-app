@@ -1,0 +1,27 @@
+.coverImage {
+
+}
+
+.coverImage img {
+    width: 70%;
+    height: auto;
+    margin-bottom: 50px;
+}
+
+
+.avatar img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    position: absolute;
+    top: 240px;
+    left: 180px;
+}
+
+.userName {
+    color: #fff;
+    position: absolute;
+    top: 270px;
+    left: 350px;
+    font-size: 23px;
+}
