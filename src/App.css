@@ -1,7 +1,0 @@
-.app-wrapper {
-  display: grid;
-  grid-template:
-          "h h h" 40px
-          "n p p" 40px
-          "n p p" 40px / 10rem 1fr 1fr;
-}

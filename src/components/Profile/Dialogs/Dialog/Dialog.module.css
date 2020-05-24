@@ -1,0 +1,29 @@
+.dialog {
+    margin: 10px;
+    cursor: pointer;
+    padding: 10px 16px;
+    border: 1px solid #E0E0E0;
+    border-radius: 5px;
+    display: flex;
+}
+
+.dialog:hover {
+    background: #e7e7e7;
+}
+
+.dialog .img {
+    background: rosybrown;
+    /*display: inline-block;*/
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.dialog a {
+    text-decoration: none;
+    color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}

@@ -1,6 +1,7 @@
 .Navigation {
     background: #E0E0E0;
-    grid-area: n;
+    /*grid-area: n;*/
+    grid-area: 2 / 1 / 3 / 2;
     min-width: 10rem;
     display: flex;
     justify-content: center;
