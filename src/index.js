@@ -3,20 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {BrowserRouter} from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import store from "./state/state";
 
 
- let rerenderEntireTree = (state) => {
+let rerenderEntireTree = (state) => {
     ReactDOM.render(
         <React.StrictMode>
             <BrowserRouter>
                 <App
-                    state={state}
-                    addPost={store.addPost.bind(store)}
-                    updateNewPostText={store.updateNewPostText.bind(store)}
-                    addMessage={store.addMessage.bind(store)}
-                    updateNewMessageText={store.updateNewMessageText.bind(store)}
+                    state={store.getState()}
+                    dispatch={store.dispatch.bind(store)}
+                // updateNewPostText={store.updateNewPostText.bind(store)}
+                // addMessage={store.addMessage.bind(store)}
+                // updateNewMessageText={store.updateNewMessageText.bind(store)}
                 />
             </BrowserRouter>
         </React.StrictMode>,

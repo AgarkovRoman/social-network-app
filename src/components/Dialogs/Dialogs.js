@@ -2,6 +2,7 @@ import React from "react";
 import classes from './Dialogs.module.css'
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
+import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../state/state";
 
 
 const Dialogs = (props) => {
@@ -29,13 +30,13 @@ const Dialogs = (props) => {
     let newMessageElement = React.createRef()
 
     let addMessage = () => {
-        props.addMessage();
+        props.dispatch(addMessageActionCreator())
         newMessageElement.current.value = '';
     }
 
     let onChangeMessage = () => {
         let messageText = newMessageElement.current.value;
-        props.updateNewMessageText(messageText);
+        props.dispatch(updateNewMessageTextActionCreator(messageText))
     }
 
     return (
