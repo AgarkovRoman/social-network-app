@@ -16,15 +16,17 @@ function App(props) {
 
       <Route path='/dialogs'
         render={() => <DialogsContainer
-          //state={props.state.dialogsPage}
-          // dispatch={props.dispatch}
-          store={props.store}
+        //state={props.state.dialogsPage}
+        // dispatch={props.dispatch}
+
+        // store={props.store}
         />} />
       <Route path='/profile'
         render={() => <Profile
-          // state={props.state.profilePage}
-          // dispatch={props.dispatch}
-          store={props.store}
+        // state={props.state.profilePage}
+        // dispatch={props.dispatch}
+
+        // store={props.store}
         />} />
     </div>
   );

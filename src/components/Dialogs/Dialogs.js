@@ -12,6 +12,7 @@ const Dialogs = (props) => {
     let dialogsElements = dialogsData.map((arr, index) => {
         return (
             <Dialog
+                key={arr.id}
                 name={arr.name}
                 id={arr.id}
             />
@@ -21,6 +22,7 @@ const Dialogs = (props) => {
     let messegesElements = messegesData.map((obj, index) => {
         return (
             <Message
+                key={obj.id}
                 message={obj.message}
             />
         )
