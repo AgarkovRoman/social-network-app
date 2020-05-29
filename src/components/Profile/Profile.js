@@ -5,10 +5,10 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 
 const Profile = (props) => {
-
+    debugger
     return (
         <div className={classes.Profile}>
-            <ProfileInfo/>
+            <ProfileInfo />
             <MyPosts
                 postdata={props.state.PostsData}
                 newPostText={props.state.newPostText}

@@ -8,22 +8,24 @@ import { Route } from "react-router-dom";
 
 
 function App(props) {
+  debugger
   return (
-        <div className={classes.appWrapper}>
-          <Header/>
-          <Navigation/>
+    <div className={classes.appWrapper}>
+      <Header />
+      <Navigation />
 
-          <Route path='/dialogs'
-                 render={ () => <Dialogs
-                     state={props.state.dialogsPage}
-                     dispatch={props.dispatch}
-                     />}/>
-          <Route path='/profile'
-                 render={ () => <Profile
-                     state={props.state.profilePage}
-                     dispatch={props.dispatch}
-                 />}/>
-        </div>
+      <Route path='/dialogs'
+        render={() => <Dialogs
+          //state={props.state.dialogsPage}
+          // dispatch={props.dispatch}
+          store={props.store}
+        />} />
+      <Route path='/profile'
+        render={() => <Profile
+          state={props.state.profilePage}
+          dispatch={props.dispatch}
+        />} />
+    </div>
   );
 }
 
