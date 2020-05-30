@@ -1,47 +1,15 @@
 import React from 'react';
 import classes from './Users.module.scss';
+import * as axios from "axios";
+import userIcon from '../../assets/images/userIcon.png';
 
 let Users = (props) => {
-
     if (props.users.length === 0) {
-        props.setUsers([
-            {
-                id: 1,
-                followed: false,
-                imgSrc: 'https://www.kindpng.com/picc/m/269-2697881_computer-icons-user-clip-art-transparent-png-icon.png',
-                firstName: 'Dmitry',
-                lastName: 'Ivanov',
-                status: 'I am looking for a job',
-                location: {
-                    country: 'Russia',
-                    city: 'Saint-Petersburg',
-                },
-            },
-            {
-                id: 2,
-                followed: true,
-                imgSrc: 'https://www.kindpng.com/picc/m/269-2697881_computer-icons-user-clip-art-transparent-png-icon.png',
-                firstName: 'Nikola',
-                lastName: 'Protonov',
-                status: 'Die COVID-19',
-                location: {
-                    country: 'Ukraine',
-                    city: 'Kiev',
-                },
-            },
-            {
-                id: 3,
-                followed: false,
-                imgSrc: 'https://www.kindpng.com/picc/m/269-2697881_computer-icons-user-clip-art-transparent-png-icon.png',
-                firstName: 'Roman',
-                lastName: 'Romanov',
-                status: 'Hi everyone!',
-                location: {
-                    country: 'Russia',
-                    city: 'Moscow',
-                },
-            },
-        ])
+
+        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+
+            props.setUsers(response.data.items);
+        });
     }
 
 
@@ -49,7 +17,7 @@ let Users = (props) => {
         {
             props.users.map(u => <div key={u.id}>
                 <span>
-                    <img className={classes.Img} src={u.imgSrc} alt='' />
+                    <img className={classes.Img} src={u.photos.small !== null ? u.photos.small : userIcon} alt='' />
                 </span>
                 <span>
 
@@ -60,10 +28,10 @@ let Users = (props) => {
                 </span>
                 <span>
                     <span>
-                        <div>{u.firstName}</div><div>{u.status}</div>
+                        <div>{u.name}</div><div>{u.status}</div>
                     </span>
                     <span>
-                        <div>{u.location.country}</div><div>{u.location.city}</div>
+                        {/* <div>{u.location.country}</div><div>{u.location.city}</div> */}
                     </span>
                 </span>
             </div>
