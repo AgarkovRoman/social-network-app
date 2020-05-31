@@ -9,7 +9,7 @@ import DialogsContainer from './components/Dialogs/DialogsContainer';
 
 
 function App(props) {
-  debugger
+
   return (
     <div className={classes.appWrapper}>
       <Header />
