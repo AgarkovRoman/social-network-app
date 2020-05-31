@@ -1,45 +1,13 @@
 const TOGGLE_FOLLOW = 'TOGGLE-FOLLOW';
-const SET_USERS = 'SET-USERS'
+const SET_USERS = 'SET-USERS';
+const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
+const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
 
 let initialState = {
-    users: [
-        //     {
-        //         id: 1,
-        //         followed: false,
-        //         imgSrc: 'https://www.kindpng.com/picc/m/269-2697881_computer-icons-user-clip-art-transparent-png-icon.png',
-        //         firstName: 'Dmitry',
-        //         lastName: 'Ivanov',
-        //         status: 'I am looking for a job',
-        //         location: {
-        //             country: 'Russia',
-        //             city: 'Saint-Petersburg',
-        //         },
-        //     },
-        //     {
-        //         id: 2,
-        //         followed: true,
-        //         imgSrc: 'https://www.kindpng.com/picc/m/269-2697881_computer-icons-user-clip-art-transparent-png-icon.png',
-        //         firstName: 'Nikola',
-        //         lastName: 'Protonov',
-        //         status: 'Die COVID-19',
-        //         location: {
-        //             country: 'Ukraine',
-        //             city: 'Kiev',
-        //         },
-        //     },
-        //     {
-        //         id: 3,
-        //         followed: false,
-        //         imgSrc: 'https://www.kindpng.com/picc/m/269-2697881_computer-icons-user-clip-art-transparent-png-icon.png',
-        //         firstName: 'Roman',
-        //         lastName: 'Romanov',
-        //         status: 'Hi everyone!',
-        //         location: {
-        //             country: 'Russia',
-        //             city: 'Moscow',
-        //         },
-        //     },
-    ],
+    users: [],
+    pageSize: 6,
+    totalUsersCount: 0,
+    currentPage: 1,
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -57,7 +25,22 @@ const usersReducer = (state = initialState, action) => {
             }
         }
         case SET_USERS: {
-            return { ...state, users: [...state.users, ...action.users] }
+            return {
+                ...state,
+                users: action.users
+            }
+        }
+        case SET_CURRENT_PAGE: {
+            return {
+                ...state,
+                currentPage: action.currentPage
+            }
+        }
+        case SET_TOTAL_USERS_COUNT: {
+            return {
+                ...state,
+                totalUsersCount: action.count
+            }
         }
         default:
             return state;
@@ -75,6 +58,20 @@ export const setUsersActionCreator = (users) => {
     return {
         type: SET_USERS,
         users,
+    }
+}
+
+export const setCurrentPageActionCreator = (currentPage) => {
+    return {
+        type: SET_CURRENT_PAGE,
+        currentPage,
+    }
+}
+
+export const setTotalUsersCountActionCreator = (totalUsersCount) => {
+    return {
+        type: SET_TOTAL_USERS_COUNT,
+        count: totalUsersCount,
     }
 }
 
