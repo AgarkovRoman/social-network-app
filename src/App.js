@@ -1,34 +1,26 @@
 import React from 'react';
 import classes from './App.module.css';
-import Header from "./components/Header/Header";
+import HeaderContainer from "./components/Header/HeaderContainer";
 import Navigation from "./components/Navigation/Navigation"
-import Profile from "./components/Profile/Profile";
 import UsersContainer from "./components/Users/UsersContainer";
 import { Route, Switch } from "react-router-dom";
 import DialogsContainer from './components/Dialogs/DialogsContainer';
+import ProfileContainer from './components/Profile/ProfileContainer';
 
 
 function App(props) {
 
   return (
     <div className={classes.appWrapper}>
-      <Header />
+      <HeaderContainer />
       <Navigation />
       <Switch>
         <Route path='/dialogs'
-          render={() => <DialogsContainer
-          //state={props.state.dialogsPage}
-          // dispatch={props.dispatch}
-
-          // store={props.store}
-          />} />
-        <Route path='/profile'
-          render={() => <Profile
-          // state={props.state.profilePage}
-          // dispatch={props.dispatch}
-
-          // store={props.store}
-          />} />
+          render={() => <DialogsContainer />}
+        />
+        <Route path='/profile/:userId?'
+          render={() => <ProfileContainer />}
+        />
         <Route path='/users'
           render={() => <UsersContainer />}
         />

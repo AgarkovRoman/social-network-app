@@ -4,7 +4,6 @@ import { addPostActionCreator, updateNewPostTextActionCreator } from "../../../r
 
 
 const MyPosts = (props) => {
-    debugger
     let PostsData = props.postdata;
 
     let Posts = PostsData.map(obj => {

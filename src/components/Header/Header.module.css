@@ -2,4 +2,19 @@
     background: #0984e3;
     /*grid-area: h;*/
     grid-area: 1 / 1 / 2 / 3;
+
+}
+
+.login {
+    float: right;
+    margin: 25px;
+}
+
+.login a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.link {
+    color: #fff;
 }

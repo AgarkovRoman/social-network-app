@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './Users.module.scss';
 import userIcon from '../../assets/images/userIcon.svg';
 import Loader from '../UI/Loader/Loader'
+import { NavLink } from 'react-router-dom';
 
 let Users = (props) => {
 
@@ -17,6 +18,7 @@ let Users = (props) => {
 
         {props.isFetching ? <Loader /> : null}
 
+
         <div>
             {pages.map(p => {
                 return <span className={props.currentPage === p && classes.selectedPage}
@@ -24,10 +26,14 @@ let Users = (props) => {
                 >{p}</span>
             })}
         </div>
+
+
         {
             props.users.map(u => <div key={u.id}>
                 <span>
-                    <img className={classes.Img} src={u.photos.small !== null ? u.photos.small : userIcon} alt='' />
+                    <NavLink to={`/profile/${u.id}`}>
+                        <img className={classes.Img} src={u.photos.small !== null ? u.photos.small : userIcon} alt='' />
+                    </NavLink>
                 </span>
                 <span>
 
