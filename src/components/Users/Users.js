@@ -3,7 +3,7 @@ import classes from './Users.module.scss';
 import userIcon from '../../assets/images/userIcon.svg';
 import Loader from '../UI/Loader/Loader'
 import { NavLink } from 'react-router-dom';
-import * as axios from "axios";
+import { followAPI } from '../../api/api';
 
 let Users = (props) => {
 
@@ -41,34 +41,20 @@ let Users = (props) => {
                     {u.followed
                         ? <button onClick={() => {
 
-                            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
-                                {
-                                    withCredentials: true,
-                                    headers: {
-                                        'API-KEY': 'c01eb349-ca08-458d-ae9f-fcf16b45f5fc'
-                                    }
-                                }
-                            )
-                                .then(response => {
-                                    if (response.data.resultCode === 0) {
+                            followAPI.unfollowUsers(u.id)
+                                .then(data => {
+                                    if (data.resultCode === 0) {
                                         props.toggleFollowUser(u.id);
                                     }
-                                });
+                                })
 
                         }}>Unfollow</button>
 
                         : <button onClick={() => {
 
-                            axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {},
-                                {
-                                    withCredentials: true,
-                                    headers: {
-                                        'API-KEY': 'c01eb349-ca08-458d-ae9f-fcf16b45f5fc'
-                                    }
-                                }
-                            )
-                                .then(response => {
-                                    if (response.data.resultCode === 0) {
+                            followAPI.followUsers(u.id)
+                                .then(data => {
+                                    if (data.resultCode === 0) {
                                         props.toggleFollowUser(u.id);
                                     }
                                 });
