@@ -3,6 +3,7 @@ const SET_USERS = 'SET-USERS';
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
 const TOGGLE_PRELOADER_FETCHING = 'TOGGLE-PRELOADER-FETCHING';
+const TOGGLE_FOLLOWING_FETCHING = 'TOGGLE_FOLLOWING_FETCHING';
 
 let initialState = {
     users: [],
@@ -10,6 +11,7 @@ let initialState = {
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: true,
+    isFollowingInProgress: [],
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -50,6 +52,17 @@ const usersReducer = (state = initialState, action) => {
                 isFetching: action.isFetching,
             }
         }
+        case TOGGLE_FOLLOWING_FETCHING: {
+            return {
+                ...state,
+                isFollowingInProgress:
+                    action.isFollowingInProgress
+                        ? [...state.isFollowingInProgress, action.userId]
+                        : state.isFollowingInProgress.filter(id => id !== action.userId),
+                // action.isFollowingInProgress
+            }
+        }
+
         default:
             return state;
     }
@@ -87,6 +100,14 @@ export const togglePreloaderFetching = (isFetching) => {
     return {
         type: TOGGLE_PRELOADER_FETCHING,
         isFetching,
+    }
+}
+
+export const toggleFollowingFetching = (isFollowingInProgress, userId) => {
+    return {
+        type: TOGGLE_FOLLOWING_FETCHING,
+        isFollowingInProgress,
+        userId,
     }
 }
 

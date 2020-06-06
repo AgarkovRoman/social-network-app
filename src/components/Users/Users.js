@@ -7,6 +7,30 @@ import { followAPI } from '../../api/api';
 
 let Users = (props) => {
 
+    const followUserApi = (id) => {
+        props.toggleFollowingFetching(true, id)
+
+        followAPI.followUsers(id)
+            .then(data => {
+                if (data.resultCode === 0) {
+                    props.toggleFollowUser(id);
+                }
+
+                props.toggleFollowingFetching(false, id)
+
+            });
+    }
+    const unfollowUserApi = (id) => {
+        props.toggleFollowingFetching(true, id)
+
+        followAPI.unfollowUsers(id)
+            .then(data => {
+                if (data.resultCode === 0) {
+                    props.toggleFollowUser(id);
+                }
+                props.toggleFollowingFetching(false, id)
+            })
+    }
 
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
     let pages = [];
@@ -39,27 +63,9 @@ let Users = (props) => {
                 <span>
 
                     {u.followed
-                        ? <button onClick={() => {
-
-                            followAPI.unfollowUsers(u.id)
-                                .then(data => {
-                                    if (data.resultCode === 0) {
-                                        props.toggleFollowUser(u.id);
-                                    }
-                                })
-
-                        }}>Unfollow</button>
-
-                        : <button onClick={() => {
-
-                            followAPI.followUsers(u.id)
-                                .then(data => {
-                                    if (data.resultCode === 0) {
-                                        props.toggleFollowUser(u.id);
-                                    }
-                                });
-
-                        }}>Follow</button>}
+                        ? <button disabled={props.isFollowingInProgress.some(id => id === u.id)} onClick={() => { unfollowUserApi(u.id) }} >Unfollow</button>
+                        : <button disabled={props.isFollowingInProgress.some(id => id === u.id)} onClick={() => { followUserApi(u.id) }}   >Follow</button>
+                    }
 
                 </span>
                 <span>
