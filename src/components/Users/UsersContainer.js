@@ -1,30 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setUsers, toggleFollowUser, setCurrentPage, setTotalUsersCount, togglePreloaderFetching, toggleFollowingFetching } from "../../redux/users-reducer";
+import { toggleFollowUser, setCurrentPage, togglePreloaderFetching, toggleFollowingFetching, getUsers, follow, unfollow } from "../../redux/users-reducer";
 import Users from './Users'
-import { userAPI } from '../../api/api'
 
 class UsersContainer extends React.Component {
 
     componentDidMount() {
-        this.props.togglePreloaderFetching(true);
-
-        userAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-            this.props.togglePreloaderFetching(false);
-            this.props.setUsers(data.items);
-            this.props.setTotalUsersCount(data.totalCount)
-        });
+        this.props.getUsers(this.props.currentPage, this.props.pageSize);
     }
 
     onPageChenged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
-        this.props.togglePreloaderFetching(true);
-
-        userAPI.getUsers(pageNumber, this.props.pageSize)
-            .then(data => {
-                this.props.togglePreloaderFetching(false);
-                this.props.setUsers(data.items);
-            });
+        this.props.getUsers(pageNumber, this.props.pageSize);
     }
 
     render() {
@@ -39,8 +26,10 @@ class UsersContainer extends React.Component {
                     toggleFollowUser={this.props.toggleFollowUser}
                     isFetching={this.props.isFetching}
 
-                    toggleFollowingFetching={this.props.toggleFollowingFetching}
                     isFollowingInProgress={this.props.isFollowingInProgress}
+
+                    follow={this.props.follow}
+                    unfollow={this.props.unfollow}
                 />
             </>
         )
@@ -62,11 +51,12 @@ let mapStateToProps = (state) => {
 
 const UserContainer = connect(mapStateToProps, {
     toggleFollowUser,
-    setUsers,
     setCurrentPage,
-    setTotalUsersCount,
     togglePreloaderFetching,
     toggleFollowingFetching,
+    getUsers,
+    follow,
+    unfollow,
 })(UsersContainer);
 
 export default UserContainer

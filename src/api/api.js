@@ -17,7 +17,6 @@ export const userAPI = {
     }
 }
 
-
 export const followAPI = {
     followUsers(id) {
         return axiosInstance.post(`follow/${id}`)
@@ -32,7 +31,6 @@ export const followAPI = {
             })
     }
 }
-
 
 export const authAPI = {
     getAuthMe() {
