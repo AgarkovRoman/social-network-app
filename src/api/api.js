@@ -14,6 +14,9 @@ export const userAPI = {
             .then(response => {
                 return response.data
             })
+    },
+    getProfile(userId) {
+        return axiosInstance.get(`profile/${userId}`)
     }
 }
 
@@ -40,3 +43,4 @@ export const authAPI = {
             })
     }
 }
+

@@ -6,8 +6,7 @@ import UsersContainer from "./components/Users/UsersContainer";
 import { Route, Switch } from "react-router-dom";
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
-
-
+import Login from './components/Login/Login'
 function App(props) {
 
   return (
@@ -23,6 +22,9 @@ function App(props) {
         />
         <Route path='/users'
           render={() => <UsersContainer />}
+        />
+        <Route path='/login'
+          render={() => <Login />}
         />
       </Switch>
     </div>
