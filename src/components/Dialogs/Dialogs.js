@@ -2,7 +2,7 @@ import React from "react";
 import classes from './Dialogs.module.css'
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 
 const Dialogs = (props) => {
     let state = props.dialogsPage;
@@ -41,7 +41,7 @@ const Dialogs = (props) => {
         props.updateNewMessage(messageText)
     }
 
-    if (!props.isAuth) return <Redirect to={'/login'} />;
+    // if (!props.isAuth) return <Redirect to={'/login'} />;
 
     return (
         <div className={classes.Dialogs}>
