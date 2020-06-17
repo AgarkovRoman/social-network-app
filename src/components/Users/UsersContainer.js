@@ -51,20 +51,6 @@ let mapStateToProps = (state) => {
     }
 }
 
-//let withRedirectComponent = withAuthRedirect(UsersContainer)
-
-// const UserContainer = connect(mapStateToProps, {
-//     toggleFollowUser,
-//     setCurrentPage,
-//     togglePreloaderFetching,
-//     toggleFollowingFetching,
-//     getUsers,
-//     follow,
-//     unfollow,
-// })(withRedirectComponent);
-
-// export default UserContainer
-
 export default compose(
     withAuthRedirect,
     connect(mapStateToProps, {
