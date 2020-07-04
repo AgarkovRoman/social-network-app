@@ -1,0 +1,11 @@
+.error textarea{
+    border: 2px solid #92372E;
+}
+
+.error input{
+    border: 2px solid #92372E;
+}
+
+.error span{
+    color: #92372E;
+}

@@ -21,13 +21,13 @@ const profileReducer = (state = initialState, action) => {
         case ADD_POST: {
             let newPost = {
                 id: 5,
-                postText: state.newPostText,
+                postText: action.newPostText,
             };
 
             return {
                 ...state,
                 PostsData: [...state.PostsData, newPost],
-                newPostText: '',
+                //newPostText: '',
             }
         }
         case UPDATE_NEW_POST_TEXT: {
@@ -53,18 +53,19 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
-export const addPostActionCreator = () => {
+export const addPostActionCreator = (newPostText) => {
     return {
-        type: ADD_POST
+        type: ADD_POST,
+        newPostText
     }
 }
 
-export const updateNewPostTextActionCreator = (postText) => {
-    return {
-        type: UPDATE_NEW_POST_TEXT,
-        newText: postText,
-    }
-}
+// export const updateNewPostTextActionCreator = (postText) => {
+//     return {
+//         type: UPDATE_NEW_POST_TEXT,
+//         newText: postText,
+//     }
+// }
 
 export const setUserProfile = (profile) => {
     return {
