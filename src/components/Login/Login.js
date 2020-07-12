@@ -5,6 +5,7 @@ import { InputType } from '../UI/FormsControls/FormsControls'
 import { required } from '../../utils/validators'
 import { connect } from 'react-redux'
 import { login } from '../../redux/auth-reducer'
+import classes from '../UI/FormsControls/FormsControls.module.css'
 
 const LoginForm = (props) => {
     return <form onSubmit={props.handleSubmit}>
@@ -38,6 +39,10 @@ const LoginForm = (props) => {
                 types="input"
             />remember me
         </div>
+        {props.error && <div className={classes.formError}>
+            {props.error}
+        </div>
+        }
         <button>Login</button>
     </form>
 }

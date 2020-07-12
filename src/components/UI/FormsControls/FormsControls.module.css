@@ -9,3 +9,9 @@
 .error span{
     color: #92372E;
 }
+
+.formError{
+    color: #92372E;
+    /* border: 1px solid #92372E;
+    padding: 5px; */
+}
