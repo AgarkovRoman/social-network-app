@@ -2,46 +2,24 @@ import React, { useState, useEffect } from 'react';
 
 const ProfileStatus = (props) => {
 
-    // const initialState = {
-    //     editMode: false
-    // }
-
-    const [editMode, setstate] = useState(false)
+    const [editMode, setEditMode] = useState(false)
     const [status, setStatus] = useState(props.status)
 
-    // useEffect((prevProps, status) => {
-    //     // if (props.status !== status) {
-    //     //     setStatus({
-    //     //         status: props.status,
-    //     //     })
-    //     // }
-    //     console.log('useEffect')
-    // })
-
-    // const toggleEditMode = () => {
-    //     setstate(
-    //         !editMode
-    //     );
-    // }
+    useEffect(() => {
+        setStatus(props.status)
+    }, [props.status])
 
     const activateEditMode = () => {
-        setstate({
-            editMode: true,
-        })
+        setEditMode(true)
     }
 
     const deactivateEditMode = () => {
-        setstate({
-            editMode: false,
-        });
+        setEditMode(false);
         props.updateStatus(status)
     }
 
-
     const onStatusChange = (e) => {
-        setStatus(
-            e.currentTarget.value
-        )
+        setStatus(e.currentTarget.value)
     }
 
     return (

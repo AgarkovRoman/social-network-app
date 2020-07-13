@@ -46,7 +46,7 @@ export const login = (email, password, rememberMe) => {
                 if (data.resultCode === 0) {
                     dispatch(authMe());
                 } else {
-                    let message = data.messegas.length > 0 ? data.messegas[0] : 'some error'
+                    let message = data.messeges.length > 0 ? data.messeges[0] : 'some error'
                     dispatch(stopSubmit('login', { _error: message }));
                 }
             });
