@@ -62,4 +62,3 @@ export const authAPI = {
         return axiosInstance.delete(`auth/login`)
     }
 }
-
