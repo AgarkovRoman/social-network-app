@@ -1,7 +1,7 @@
 import * as axios from 'axios'
 
 const axiosInstance = axios.create({
-    baseURL: 'https://social-network.samuraijs.com/api/1.0/',
+    baseURL: 'https://crossorigin.me/https://social-network.samuraijs.com/api/1.0/',
     withCredentials: true,
     headers: {
         'API-KEY': 'c01eb349-ca08-458d-ae9f-fcf16b45f5fc'
