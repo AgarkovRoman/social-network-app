@@ -1,7 +1,8 @@
 import * as axios from 'axios'
+import { savePhotoSuccess } from '../redux/profile-reducer'
 
 const axiosInstance = axios.create({
-    baseURL: 'https://crossorigin.me/https://social-network.samuraijs.com/api/1.0/',
+    baseURL: 'https://social-network.samuraijs.com/api/1.0/',
     withCredentials: true,
     headers: {
         'API-KEY': 'c01eb349-ca08-458d-ae9f-fcf16b45f5fc'
@@ -30,6 +31,15 @@ export const profileAPI = {
     },
     updateStatus(status) {
         return axiosInstance.put(`profile/status`, { status })
+    },
+    savePhoto(photo) {
+        const formData = new FormData();
+        formData.append('image', photo)
+        return axiosInstance.put(`profile/photo`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
     }
 }
 
