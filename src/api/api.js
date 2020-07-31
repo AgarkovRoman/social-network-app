@@ -72,3 +72,12 @@ export const authAPI = {
         return axiosInstance.delete(`auth/login`)
     }
 }
+
+export const securityAPI = {
+    getCaptcha() {
+        return axiosInstance.get(`security/get-captcha-url `)
+            .then(response => {
+                return response.data
+            })
+    },
+}
